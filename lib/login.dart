@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:interma/dashboard.dart';
+import 'package:interma/chooser.dart';
 import 'package:interma/register.dart';
 
 class Login extends StatefulWidget {
@@ -86,7 +86,7 @@ class _LoginState extends State<Login> {
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(20),
                           child: MaterialButton(
-                            onPressed: () => Get.to(Dashboard()),
+                            onPressed: () => Get.to(Chooser()),
                             child: Text(
                               'Masuk',
                               style:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:interma/dashboardAdmin.dart';
 import 'package:interma/splash.dart';
 import 'login.dart';
 

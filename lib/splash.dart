@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:interma/login.dart';
+import 'package:interma/chooser.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,7 +11,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     startSplashScreen();
   }
@@ -19,46 +18,28 @@ class _SplashScreenState extends State<SplashScreen> {
   startSplashScreen() {
     var _duration = const Duration(seconds: 5);
     return Timer(_duration, () async {
-      Get.offAll(Login());
+      Get.offAll(Chooser());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         body: Container(
           child: Stack(
             children: <Widget>[
-              Positioned(
-                top: -40,
-                left: -50,
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.height / 4,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 25),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
-              Center(
-                  child: Text(
-                'Interma',
-                style: TextStyle(color: Colors.white, fontSize: 37),
+
+              Center(child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Image.asset('assets/image/logo.png', height: MediaQuery.of(context).size.height * 0.3,),
+                  Text("Interma", style: TextStyle(color: Color(0xff509B92), fontSize: 40, fontWeight: FontWeight.w600),
+
+
+                  )],
               )),
-              Positioned(
-                bottom: -150,
-                right: -80,
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  width: MediaQuery.of(context).size.height / 2.5,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 25),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
+
             ],
           ),
         ));
