@@ -1,13 +1,13 @@
-class Donatur {
+class Donaturs {
   int idDonatur;
   String nama;
   String alamat;
   String kontak;
   Null photo;
 
-  Donatur({this.idDonatur, this.nama, this.alamat, this.kontak, this.photo});
+  Donaturs({this.idDonatur, this.nama, this.alamat, this.kontak, this.photo});
 
-  Donatur.fromJson(Map<String, dynamic> json) {
+  Donaturs.fromJson(Map<String, dynamic> json) {
     idDonatur = json['id_donatur'];
     nama = json['nama'];
     alamat = json['alamat'];

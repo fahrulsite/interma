@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:interma/adminView/adminLogin.dart';
 import 'package:interma/viewUser/donasiViewUser.dart';
 import 'package:interma/viewUser/penyaluranViewUser.dart';
 class Chooser extends StatefulWidget {
@@ -120,19 +121,22 @@ class _ChooserState extends State<Chooser> {
               ),
             ),
 
-            Container(
-              height: 150,
-              width: MediaQuery.of(context).size.width * 0.3,
-              child: Card(
-                color: Colors.white,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.people),
-                    SizedBox(height: 20,),
-                    Text("Admin")
-                  ],
-                ),),
+            InkWell(
+              onTap: ()=>Get.to(AdminLogin()),
+              child: Container(
+                height: 150,
+                width: MediaQuery.of(context).size.width * 0.3,
+                child: Card(
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.people),
+                      SizedBox(height: 20,),
+                      Text("Admin")
+                    ],
+                  ),),
+              ),
             ),
           ],
         ),

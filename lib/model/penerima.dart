@@ -1,12 +1,12 @@
-class Penerima {
+class Penerimas {
   int idPenerima;
   String nama;
   String alamat;
   String kontak;
 
-  Penerima({this.idPenerima, this.nama, this.alamat, this.kontak});
+  Penerimas({this.idPenerima, this.nama, this.alamat, this.kontak});
 
-  Penerima.fromJson(Map<String, dynamic> json) {
+  Penerimas.fromJson(Map<String, dynamic> json) {
     idPenerima = json['id_penerima'];
     nama = json['nama'];
     alamat = json['alamat'];
