@@ -179,7 +179,7 @@ class _EditDonasiViewState extends State<EditDonasiView> {
                                     child: Text("No")),
                                 FlatButton(onPressed:(){
                                   ApiService.deleteDonasi(
-                                      id: id).whenComplete((){
+                                      id: widget.data.idDonasi.toString()).whenComplete((){
                                     Get.back();
                                     Get.back();
                                   });},
@@ -201,7 +201,7 @@ class _EditDonasiViewState extends State<EditDonasiView> {
                       ),
 
                       InkWell(
-                        onTap: ()=>ApiService.editDonasi(id_donatur:id, jumlah: jumlah.text,tanggal: _selectedDate).then((value) => {
+                        onTap: ()=>ApiService.editDonasi(id: widget.data.idDonasi.toString() ,id_donatur:id, jumlah: jumlah.text,tanggal: _selectedDate).then((value) => {
                           Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
                         })..whenComplete(() => Get.back()),
                         child: Container(

@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:interma/adminView/adminChooser.dart';
 import 'package:interma/chooser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -9,6 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  var value = false;
   @override
   void initState() {
     super.initState();
@@ -18,7 +21,12 @@ class _SplashScreenState extends State<SplashScreen> {
   startSplashScreen() {
     var _duration = const Duration(seconds: 5);
     return Timer(_duration, () async {
-      Get.offAll(Chooser());
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      setState(() {
+        value = preferences.getBool("status");
+        print(value);
+      });
+      (value==null) ? Get.offAll(Chooser()) : Get.offAll(AdminChooser()) ;
     });
   }
 

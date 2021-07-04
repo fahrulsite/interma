@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:interma/model/admin.dart';
 import 'package:interma/model/penerima.dart';
 
 import '../model/donations.dart';
@@ -169,10 +170,10 @@ class ApiService{
     print('Response body: ${response.body}');
   }
 
-  static Future<List<Penyalurans>> editPenyaluran({String id, String id_penyaluran, String nama, String tanggal, String jumlah}) async {
+  static Future<List<Penyalurans>> editPenyaluran({String id, String id_penerima, String nama, String tanggal, String jumlah}) async {
     final response = await http.put( Uri.parse( "https://ptidonation.herokuapp.com/penyaluran/$id}"),
       body: {
-        'id_penyaluran' :id_penyaluran,
+        'id_penerima' :id_penerima,
         'tanggal': tanggal,
         'jumlah':jumlah
       },
@@ -210,6 +211,5 @@ class ApiService{
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
   }
-
 
 }

@@ -176,7 +176,7 @@ class _EditPenyaluranViewState extends State<EditPenyaluranView> {
                                     child: Text("No")),
                                 FlatButton(onPressed:(){
                                   ApiService.deletePenyaluran(
-                                      id: id).whenComplete((){
+                                      id: widget.data.idPenyaluran.toString()).whenComplete((){
                                     Get.back();
                                     Get.back();
                                   });},
@@ -198,8 +198,9 @@ class _EditPenyaluranViewState extends State<EditPenyaluranView> {
                       ),
 
                       InkWell(
-                        onTap: ()=>ApiService.editPenyaluran(id_penyaluran:id, jumlah: jumlah.text,tanggal: _selectedDate).then((value) => {
+                        onTap: ()=>ApiService.editPenyaluran(id: widget.data.idPenyaluran.toString(),id_penerima:id, jumlah: jumlah.text,tanggal: _selectedDate).then((value) => {
                           Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
+                          print(id+_selectedDate+jumlah.text)
                         })..whenComplete(() => Get.back()),
                         child: Container(
                           width: 100,

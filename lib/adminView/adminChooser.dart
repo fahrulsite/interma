@@ -6,7 +6,25 @@ import 'package:interma/adminView/donasi/adminDonasiView.dart';
 import 'package:interma/adminView/donatur/adminDonaturView.dart';
 import 'package:interma/adminView/penerima/adminPenerimaView.dart';
 import 'package:interma/adminView/penyaluran/adminPenyaluranView.dart';
-class AdminChooser extends StatelessWidget {
+import 'package:shared_preferences/shared_preferences.dart';
+
+class AdminChooser extends StatefulWidget {
+  @override
+  _AdminChooserState createState() => _AdminChooserState();
+}
+
+bool isLogin = true;
+class _AdminChooserState extends State<AdminChooser> {
+
+  signOut() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setBool("status", null);
+      preferences.commit();
+      isLogin = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,139 +115,142 @@ class AdminChooser extends StatelessWidget {
             ),
 
             Positioned(
-              top: 130,
-              left: 0,
-              right: 0,
-              child: Container(
-                height: 600,
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
+                top: 130,
+                left: 0,
+                right: 0,
                 child: Container(
-                  margin: EdgeInsets.only(top: 16, left: 16, right: 16),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: ()=>Get.to(AdminDonaturView()),
-                            child: Container(
-                              height: 130,
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              child: Card(
-                                color: Colors.white,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.people_alt_rounded, color: Colors.black),
-                                    SizedBox(height: 20,),
-                                    Text("Donatur")
-                                  ],
-                                ),),
-                            ),
-                          ),
-
-                          InkWell(
-                            onTap: ()=> Get.to(AdminDonasiView()),
-                            child: Container(
-                              height: 130,
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              child: Card(
-                                color: Colors.white,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset('assets/image/donasi.png', height: 30,),
-                                    SizedBox(height: 20,),
-                                    Text("Donasi")
-                                  ],
-                                ),),
-                            ),
-                          ),
-
-
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: ()=>Get.to(AdminPenerimaView()),
-                            child: Container(
-                              height: 130,
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              child: Card(
-                                color: Colors.white,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.people_alt_rounded, color: Colors.black),
-                                    SizedBox(height: 20,),
-                                    Text("Penerima")
-                                  ],
-                                ),),
-                            ),
-                          ),
-
-                          InkWell(
-                            onTap: ()=>Get.to(AdminPenyaluranView()),
-                            child: Container(
-                              height: 130,
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              child: Card(
-                                color: Colors.white,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset('assets/image/penyaluran.png', height: 30,),
-                                    SizedBox(height: 20,),
-                                    Text("Penyaluran")
-                                  ],
-                                ),),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      InkWell(
-                        onTap: (){
-                          showDialog(context: context, builder: (context){
-                            return AlertDialog(
-                              title: Text("Konfirmasi"),
-                              content: Text("Apakah Anda Yakin ingin keluar?"),
-                              actions: [
-                                FlatButton(
-                                    onPressed: (){
-                                      Get.back();
-                                    },
-                                    child: Text("No")),
-                                FlatButton(onPressed:()=>SystemNavigator.pop(),
-                                    child: Text("Yes")),
-                              ],
-                            );
-                          });
-                        },
-                        child: Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          child: Card(
-                              color: Color(0xffFF616D),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Keluar", style: TextStyle(color: Colors.white),)
-                              ],
-                            ),),
-                        ),
-                      ),
-                    ],
+                  height: 600,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                ),
-              )
+                  child: Container(
+                    margin: EdgeInsets.only(top: 16, left: 16, right: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: ()=>Get.to(AdminDonaturView()),
+                              child: Container(
+                                height: 130,
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.people_alt_rounded, color: Colors.black),
+                                      SizedBox(height: 20,),
+                                      Text("Donatur")
+                                    ],
+                                  ),),
+                              ),
+                            ),
+
+                            InkWell(
+                              onTap: ()=> Get.to(AdminDonasiView()),
+                              child: Container(
+                                height: 130,
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/image/donasi.png', height: 30,),
+                                      SizedBox(height: 20,),
+                                      Text("Donasi")
+                                    ],
+                                  ),),
+                              ),
+                            ),
+
+
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: ()=>Get.to(AdminPenerimaView()),
+                              child: Container(
+                                height: 130,
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.people_alt_rounded, color: Colors.black),
+                                      SizedBox(height: 20,),
+                                      Text("Penerima")
+                                    ],
+                                  ),),
+                              ),
+                            ),
+
+                            InkWell(
+                              onTap: ()=>Get.to(AdminPenyaluranView()),
+                              child: Container(
+                                height: 130,
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/image/penyaluran.png', height: 30,),
+                                      SizedBox(height: 20,),
+                                      Text("Penyaluran")
+                                    ],
+                                  ),),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        InkWell(
+                          onTap: (){
+                            showDialog(context: context, builder: (context){
+                              return AlertDialog(
+                                title: Text("Konfirmasi"),
+                                content: Text("Apakah Anda Yakin ingin keluar?"),
+                                actions: [
+                                  FlatButton(
+                                      onPressed: (){
+                                        Get.back();
+                                      },
+                                      child: Text("No")),
+                                  FlatButton(onPressed:(){
+                                    signOut();
+                                    SystemNavigator.pop();
+                                  },
+                                      child: Text("Yes")),
+                                ],
+                              );
+                            });
+                          },
+                          child: Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Card(
+                              color: Color(0xffFF616D),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Keluar", style: TextStyle(color: Colors.white),)
+                                ],
+                              ),),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
             )
           ],
         ),
@@ -237,3 +258,4 @@ class AdminChooser extends StatelessWidget {
     );
   }
 }
+
