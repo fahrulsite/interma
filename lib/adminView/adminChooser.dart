@@ -228,7 +228,7 @@ class _AdminChooserState extends State<AdminChooser> {
                                       child: Text("No")),
                                   FlatButton(onPressed:(){
                                     signOut();
-                                    Get.back();
+                                    SystemNavigator.pop();
                                   },
                                       child: Text("Yes")),
                                 ],
