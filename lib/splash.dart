@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
         value = preferences.getBool("status");
         print(value);
       });
-      (value==null) ? Get.offAll(Chooser()) : Get.offAll(AdminChooser()) ;
+      (value==false) ? Get.offAll(Chooser()) : Get.offAll(AdminChooser()) ;
     });
   }
 

@@ -19,9 +19,10 @@ class _AdminChooserState extends State<AdminChooser> {
   signOut() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      preferences.setBool("status", null);
+      preferences.setBool("status", false);
       preferences.commit();
       isLogin = false;
+      print(preferences.getBool("status"));
     });
   }
 
@@ -227,7 +228,7 @@ class _AdminChooserState extends State<AdminChooser> {
                                       child: Text("No")),
                                   FlatButton(onPressed:(){
                                     signOut();
-                                    SystemNavigator.pop();
+                                    Get.back();
                                   },
                                       child: Text("Yes")),
                                 ],
