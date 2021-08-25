@@ -1,4 +1,4 @@
-Interma Aplikasi Managemen Arsip Ormawa
+Interma Aplikasi Managemen Data Donasi
 
 Fahrul Ahmad Fauzi
 
